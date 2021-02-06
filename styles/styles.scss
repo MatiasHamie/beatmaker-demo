@@ -1,0 +1,122 @@
+@import "./_globals";
+@import "./_mixins";
+@import "./_animations";
+
+// colors
+$clr-kick-pad: rgb(160, 211, 224);
+$clr-kick-pad-active: rgb(59, 197, 231);
+$clr-snare-pad: rgb(224, 160, 208);
+$clr-snare-pad-active: rgb(218, 58, 178);
+$clr-hihat-pad: rgb(224, 194, 160);
+$clr-hihat-pad-active: rgb(241, 158, 64);
+.sequencer {
+  min-height: 100vh;
+  @include flex(column, center, center);
+
+  select {
+    padding: 1rem;
+    font-size: 1rem;
+    margin-left: 1rem;
+  }
+
+  .controls {
+    @include controls();
+    button {
+      @include button();
+    }
+  }
+
+  .pad {
+    transition: all 0.5s ease;
+  }
+
+  .kick-track {
+    @include flex(row, space-between, center);
+    width: 70%;
+    margin-top: 5rem;
+
+    .kick {
+      display: flex;
+      .kick-pad {
+        @include pad-pos-size();
+        background: $clr-kick-pad;
+
+        &.active {
+          background: $clr-kick-pad-active;
+        }
+      }
+    }
+  }
+
+  .snare-track {
+    @include flex(row, space-between, center);
+    width: 70%;
+    margin-top: 5rem;
+
+    .snare {
+      display: flex;
+      .snare-pad {
+        @include pad-pos-size();
+        background: $clr-snare-pad;
+
+        &.active {
+          background: $clr-snare-pad-active;
+        }
+      }
+    }
+  }
+
+  .hihat-track {
+    @include flex(row, space-between, center);
+    width: 70%;
+    margin-top: 5rem;
+    .hihat {
+      display: flex;
+      .hihat-pad {
+        @include pad-pos-size();
+        background: $clr-hihat-pad;
+
+        &.active {
+          background: $clr-hihat-pad-active;
+        }
+      }
+    }
+  }
+
+  .play {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    background: rgb(88, 88, 88);
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  .tempo{
+   margin: 3rem;
+   width: 30%; 
+  }
+
+  .tempo-slider{
+    padding: 1rem;
+    margin: 1rem 0rem;
+    width: 100%;
+    position: relative;
+    background: rgb(88, 88, 88);
+    cursor: pointer;
+  }
+
+}
+
+@keyframes playTrack{
+  from{
+      transform: scale(1);
+  }
+
+  to{
+      transform: scale(1.2);
+  }
+}
+
